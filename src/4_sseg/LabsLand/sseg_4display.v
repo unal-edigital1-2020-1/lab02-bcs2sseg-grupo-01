@@ -8,12 +8,11 @@ module sseg_4display(
     output wire [6:0] G_HEX3);
 
     wire enable;
-    wire [15:0] num;
     
-    reg [3:0] BCD1 = 0;
-    reg [3:0] BCD2 = 0;
-    reg [3:0] BCD3 = 0;
-    reg [3:0] BCD4 = 0;
+    reg [3:0] BCD1 = 4'b0000;
+    reg [3:0] BCD2 = 4'b0000;
+    reg [3:0] BCD3 = 4'b0000;
+    reg [3:0] BCD4 = 4'b0000;
     reg [22:0] cfreq = 0;
     reg [1:0] count = 0;
     
@@ -22,8 +21,6 @@ module sseg_4display(
     BCDtoSSeg bcdtosseg1( .BCD(BCD2), .SSeg(G_HEX1));
     BCDtoSSeg bcdtosseg2( .BCD(BCD3), .SSeg(G_HEX2));
     BCDtoSSeg bcdtosseg3( .BCD(BCD4), .SSeg(G_HEX3));
-    
-    assign num=V_SW;
     
     assign enable = cfreq[22];
     
